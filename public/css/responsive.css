@@ -1,0 +1,97 @@
+@media (max-width: 960px) {
+    .property-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero .container {
+        grid-template-columns: 1fr;
+    }
+
+    .blueprint-house {
+        max-width: 300px;
+        justify-self: center;
+        opacity: 0.9;
+    }
+
+    .search-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .details-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .owner-card {
+        position: static;
+    }
+
+    .dash-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 720px) {
+    .main-nav {
+        position: fixed;
+        top: 68px;
+        left: 0;
+        right: 0;
+        background: var(--ink-navy);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px 24px 24px;
+        gap: 16px;
+        transform: translateY(-150%);
+        transition: transform 0.2s ease;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .main-nav.open {
+        transform: translateY(0);
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    #nav-user-slot {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .search-card {
+        margin-top: -48px;
+    }
+
+    .search-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .property-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .details-gallery {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .gallery-side {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: none;
+        height: 160px;
+    }
+
+    .form-grid-2 {
+        grid-template-columns: 1fr;
+    }
+
+    .dash-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .section {
+        padding: 40px 0;
+    }
+}

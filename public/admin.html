@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard | Keystone</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <a href="/index.html" class="brand">
+            <svg class="brand-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 17L16 6L28 17" stroke="#B8863B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8 15V27H24V15" stroke="#F6F4EF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="14" y="19" width="5" height="8" stroke="#B8863B" stroke-width="2"/>
+            </svg>
+            Keystone
+        </a>
+        <nav class="main-nav" id="main-nav">
+            <a href="/properties.html">Properties</a>
+            <a href="/properties.html?status=For+Sale">Buy</a>
+            <a href="/properties.html?status=For+Rent">Rent</a>
+            <div id="nav-user-slot"></div>
+        </nav>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+    </div>
+</header>
+
+<section class="section" style="padding-top:40px;">
+    <div class="container">
+        <div class="section-head">
+            <div>
+                <div class="section-eyebrow">Admin</div>
+                <h2>Dashboard</h2>
+            </div>
+            <button type="button" class="btn btn-primary" id="admin-add-toggle">+ Add new property</button>
+        </div>
+        <div id="admin-add-property-slot"></div>
+        <div id="admin-root">
+            <div class="skeleton" style="height:400px;"></div>
+        </div>
+    </div>
+</section>
+
+<template id="admin-property-form-template">
+    <div class="auth-card" id="admin-add-property-card" style="max-width:100%;margin-bottom:40px;">
+        <div class="flex justify-between items-center">
+            <h3 style="font-family:var(--font-display);margin:0;">Add a new property</h3>
+            <button type="button" class="btn btn-ghost btn-sm" id="admin-add-cancel">Close</button>
+        </div>
+        <p class="sub" style="margin-top:6px;">Publish a listing directly from the dashboard, including photos. Leave "Owner email" blank to list it under your own admin account.</p>
+
+        <div class="form-error" id="admin-property-error"></div>
+        <div class="form-success" id="admin-property-success">Property published.</div>
+
+        <form id="admin-property-form" enctype="multipart/form-data">
+            <div class="form-row">
+                <label for="ap-title">Title</label>
+                <input id="ap-title" name="title" required placeholder="Modern hillside villa">
+            </div>
+
+            <div class="form-row">
+                <label for="ap-description">Description</label>
+                <textarea id="ap-description" name="description" rows="4" required placeholder="Describe the property"></textarea>
+            </div>
+
+            <div class="form-row form-grid-2">
+                <div>
+                    <label for="ap-type">Property type</label>
+                    <select id="ap-type" name="type" required>
+                        <option value="House">House</option>
+                        <option value="Apartment">Apartment</option>
+                        <option value="Villa">Villa</option>
+                        <option value="Condo">Condo</option>
+                        <option value="Land">Land</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="ap-status">Listing status</label>
+                    <select id="ap-status" name="status" required>
+                        <option value="For Sale">For Sale</option>
+                        <option value="For Rent">For Rent</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row form-grid-2">
+                <div>
+                    <label for="ap-price">Price</label>
+                    <input id="ap-price" name="price" type="number" min="0" required placeholder="450000">
+                </div>
+                <div>
+                    <label for="ap-area">Area (sqft)</label>
+                    <input id="ap-area" name="area" type="number" min="0" required placeholder="1800">
+                </div>
+            </div>
+
+            <div class="form-row form-grid-2">
+                <div>
+                    <label for="ap-bedrooms">Bedrooms</label>
+                    <input id="ap-bedrooms" name="bedrooms" type="number" min="0" value="0">
+                </div>
+                <div>
+                    <label for="ap-bathrooms">Bathrooms</label>
+                    <input id="ap-bathrooms" name="bathrooms" type="number" min="0" value="0">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <label for="ap-location">Location</label>
+                <input id="ap-location" name="location" required placeholder="City, State">
+            </div>
+
+            <div class="form-row">
+                <label for="ap-address">Street address (optional)</label>
+                <input id="ap-address" name="address" placeholder="12 Hillside Lane">
+            </div>
+
+            <div class="form-row">
+                <label for="ap-owner-email">Owner email (optional)</label>
+                <input id="ap-owner-email" name="ownerEmail" type="email" placeholder="Defaults to your admin account">
+            </div>
+
+            <div class="form-row">
+                <label for="ap-images">Photos</label>
+                <input id="ap-images" name="images" type="file" accept="image/*" multiple>
+                <div class="image-upload-preview" id="ap-image-preview"></div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Publish listing</button>
+        </form>
+    </div>
+</template>
+
+<footer class="site-footer">
+    <div class="container">
+        <div>Keystone Real Estate Portal &middot; <span id="year"></span></div>
+        <div>Built with Node, Express &amp; MongoDB</div>
+    </div>
+</footer>
+
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+<script src="/js/api.js"></script>
+<script src="/js/admin.js"></script>
+</body>
+</html>

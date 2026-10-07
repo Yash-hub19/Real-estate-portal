@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Property Details | Keystone</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <a href="/index.html" class="brand">
+            <svg class="brand-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 17L16 6L28 17" stroke="#B8863B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8 15V27H24V15" stroke="#F6F4EF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="14" y="19" width="5" height="8" stroke="#B8863B" stroke-width="2"/>
+            </svg>
+            Keystone
+        </a>
+        <nav class="main-nav" id="main-nav">
+            <a href="/properties.html">Properties</a>
+            <a href="/properties.html?status=For+Sale">Buy</a>
+            <a href="/properties.html?status=For+Rent">Rent</a>
+            <div id="nav-user-slot"></div>
+        </nav>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+    </div>
+</header>
+
+<section class="section" style="padding-top:36px;">
+    <div class="container" id="details-root">
+        <div class="skeleton" style="height:420px;"></div>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <div class="container">
+        <div>Keystone Real Estate Portal &middot; <span id="year"></span></div>
+        <div>Built with Node, Express &amp; MongoDB</div>
+    </div>
+</footer>
+
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+<script src="/js/api.js"></script>
+<script src="/js/properties.js"></script>
+<script src="/js/property-details.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Account | Keystone</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <a href="/index.html" class="brand">
+            <svg class="brand-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 17L16 6L28 17" stroke="#B8863B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8 15V27H24V15" stroke="#F6F4EF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="14" y="19" width="5" height="8" stroke="#B8863B" stroke-width="2"/>
+            </svg>
+            Keystone
+        </a>
+        <nav class="main-nav" id="main-nav">
+            <a href="/properties.html">Properties</a>
+            <a href="/properties.html?status=For+Sale">Buy</a>
+            <a href="/properties.html?status=For+Rent">Rent</a>
+            <div id="nav-user-slot"></div>
+        </nav>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+    </div>
+</header>
+
+<div class="auth-shell">
+    <div class="auth-card">
+        <h1>Create your account</h1>
+        <p class="sub">List properties, save favorites, and message owners directly.</p>
+
+        <div class="form-error" id="register-error"></div>
+
+        <form id="register-form">
+            <div class="form-row">
+                <label for="reg-name">Full name</label>
+                <input id="reg-name" type="text" required autocomplete="name">
+            </div>
+            <div class="form-row">
+                <label for="reg-email">Email</label>
+                <input id="reg-email" type="email" required autocomplete="email">
+            </div>
+            <div class="form-row">
+                <label for="reg-phone">Phone (optional)</label>
+                <input id="reg-phone" type="tel" autocomplete="tel">
+            </div>
+            <div class="form-row form-grid-2">
+                <div>
+                    <label for="reg-password">Password</label>
+                    <input id="reg-password" type="password" required autocomplete="new-password" minlength="6">
+                </div>
+                <div>
+                    <label for="reg-confirm">Confirm password</label>
+                    <input id="reg-confirm" type="password" required autocomplete="new-password" minlength="6">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Create account</button>
+        </form>
+
+        <div class="auth-switch">Already have an account? <a href="/login.html">Log in</a></div>
+    </div>
+</div>
+
+<script src="/js/api.js"></script>
+<script src="/js/auth.js"></script>
+</body>
+</html>
